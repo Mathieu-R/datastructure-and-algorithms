@@ -1,8 +1,24 @@
 package datastructures.LinkedList;
 
-public class LinkedList {
-  Node head;
+public class MyLinkedList<E> implements LinkedList<E> {
+  private Node<E> head; // head of the linkedlist
 
+  private class Node {
+    private E item;
+    private Node<E> next;
+
+    public Node<E>(E element, Node<E> next) {
+      this.item = element;
+      this.next = next;
+    }
+  }
+
+  @Override
+  public boolean empty(Node currentNode) {
+    return (currentNode.next == null);
+  }
+
+  @Override
   public void append(int data) {
     if (head == null) {
       head = new Node(data);
@@ -10,23 +26,21 @@ public class LinkedList {
     }
 
     Node currentNode = head;
-    while (!isEmpty(currentNode)) {
+    while (!empty(currentNode)) {
       currentNode = currentNode.next;
     }
 
     currentNode.next = new Node(data);
   }
 
+  @Override
   public void prepend (int data) {
     Node newHead = new Node(data);
     newHead.next = head;
     head = newHead;
   }
 
-  public boolean isEmpty(Node currentNode) {
-    return (currentNode.next == null);
-  }
-
+  @Override
   public void deleteWithValue(int data) {
     if (head == null) {
       return;
@@ -44,7 +58,5 @@ public class LinkedList {
       }
       currentNode = currentNode.next;
     }
-
-
   }
 }
