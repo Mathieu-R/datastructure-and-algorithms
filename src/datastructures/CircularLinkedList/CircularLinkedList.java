@@ -1,5 +1,6 @@
 package datastructures.CircularLinkedList;
 
+import datastructures.Node;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -7,18 +8,8 @@ import java.util.NoSuchElementException;
 public class CircularLinkedList<Item> implements Iterable<Item> {
   private long nOp = 0; // count the number of operations
   private int n; // size of the stack
-  private Node tail;
-  private Node head; // trailer of the list
-
-  // helper linked list class
-  private class Node {
-    private Item item;
-    private Node next;
-
-    private Node(Item item) {
-      this.item = item;
-    }
-  }
+  private Node first;
+  private Node last; // trailer of the list
 
   public CircularLinkedList() {
     tail = null;

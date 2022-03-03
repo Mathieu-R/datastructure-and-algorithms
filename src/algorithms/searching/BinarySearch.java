@@ -1,3 +1,5 @@
+package algorithms.BinarySearch;
+
 public int BinarySearch(int[] array, int value) {
   int n = array.length();
 

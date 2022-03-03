@@ -1,25 +1,36 @@
 package datastructures.Stack;
 
-public class MyStack<E> implements Stack<E> {
-  private Node<E> top; // node on top of the stack
+/**
+ * Stack using LinkedList implementation
+ */
+
+public class MyStack<E> implements Stack<E>, Iterable<E> {
+  private Node top; // node on top of the stack
   private int size; // size of the stack
 
-  public class Node<E> {
+  private class Node {
     private E item;
-    private Node<E> next;
+    private Node next;
 
-    public Node(E element, Node<E> next) {
-      this.item = element;
-      this.next = next;
+    public Node(E element) {
+      item = element;
+      next = null;
+    }
+
+    public Node(E element, Node nextNode) {
+      item = element;
+      next = nextNode;
     }
   }
 
-  /*
-  Test if the stack is empty
+    /*
+  Add an item at the top of the stack
    */
   @Override
-  public boolean empty() {
-    return this.top == null;
+  public void push(E item) {
+    Node newTop = new Node(item, top);
+    top = newTop;
+    size++;
   }
 
   /*
@@ -27,11 +38,11 @@ public class MyStack<E> implements Stack<E> {
    */
   @Override
   public E peek() throws EmptyStackException {
-    if (this.empty()) {
+    if (isEmpty()) {
       throw new EmptyStackException("Stack is empty.");
     }
 
-    return this.top.item;
+    return top.item;
   }
 
   /*
@@ -39,21 +50,26 @@ public class MyStack<E> implements Stack<E> {
    */
   @Override
   public E pop() throws EmptyStackException {
-    if (this.empty()) {
+    if (isEmpty()) {
       throw new EmptyStackException("Stack is empty.");
     }
 
-    Node<E> top = this.top;
-    this.top = this.top.next;
-    return top.item;
+    Node oldTop = top;
+    top = top.next;
+    size--;
+    return oldTop.item;
   }
 
-  /*
-  Add an item at the top of the stack
+    /*
+  Test if the stack is empty
    */
   @Override
-  public void push(E item) {
-    Node<E> top = new Node<E>(item, this.top);
-    this.top = top;
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
+  @Override
+  public int size() {
+    return size;
   }
 }
