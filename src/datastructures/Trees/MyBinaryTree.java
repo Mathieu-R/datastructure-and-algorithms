@@ -1,5 +1,11 @@
 package datastructures.Trees;
 
+/**
+ * A Binary (Search) Tree is made of nodes containing two children: left child and right child.
+ * Each child can contain two subchildren etc...
+ * The Tree start with a root. At each node we assign a key and a value.
+ * We compare the chidren keys with the parent key. The lowest key goes to the left child and the key to the right child. Useful to look for a specific value in the Tree
+ */
 public class MyBinaryTree<Key extends Comparable<Key>, Value> {
   private Node root;
 
@@ -17,6 +23,14 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
     }
   }
 
+  /**
+   * To get a specific item from the Tree with the help of its key, we start from the root of the Tree.
+   * Then we compare each parent key with the given key.
+   * Recall that lowest keys are at left and greatest are at right.
+   * We go down the Tree until we find the associated value (or not).
+   * @param key
+   * @return
+   */
   public Value get(Key key) {
     return get(root, key);
   }
@@ -72,6 +86,4 @@ public class MyBinaryTree<Key extends Comparable<Key>, Value> {
 
     return node.N;
   }
-
-
 }
