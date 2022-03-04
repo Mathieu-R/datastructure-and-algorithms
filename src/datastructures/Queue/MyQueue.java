@@ -2,7 +2,7 @@ package datastructures.Queue;
 
 import datastructures.Queue.EmptyQueueException;
 
-public class MyQueue<E> implements Queue<E>, Iterable<E>  {
+public class MyQueue<E> implements Queue<E> {
   Node first;
   Node last;
   int size = 0;

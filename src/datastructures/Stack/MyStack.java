@@ -4,7 +4,7 @@ package datastructures.Stack;
  * Stack using LinkedList implementation
  */
 
-public class MyStack<E> implements Stack<E>, Iterable<E> {
+public class MyStack<E> implements Stack<E>{
   private Node top; // node on top of the stack
   private int size; // size of the stack
 

@@ -62,7 +62,7 @@ public class MyLinkedList<E> implements LinkedList<E> {
 
 
     // we begin at the first element (head)
-    Node pointingNode = head;
+    Node pointingNode = first;
     for (int i = 0; i < index; i++) {
       pointingNode = pointingNode.next;
     }
@@ -72,15 +72,15 @@ public class MyLinkedList<E> implements LinkedList<E> {
 
   @Override
   public void delete(E item) {
-    if (head == null) {
+    if (first == null) {
       return;
     }
 
-    if (head.item == item) {
-      head = head.next;
+    if (first.item == item) {
+      first = first.next;
     }
 
-    Node currentNode = head;
+    Node currentNode = first;
     while(currentNode.next != null) {
       if (currentNode.item == item) {
         currentNode.next = currentNode.next.next;
