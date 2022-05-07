@@ -1,4 +1,4 @@
-package datastructures.LinkedList;
+package datastructures.List;
 
 public class EmptyLinkedListException extends Exception {
   public EmptyLinkedListException() {
