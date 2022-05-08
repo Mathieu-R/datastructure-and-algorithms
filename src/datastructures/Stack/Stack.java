@@ -4,40 +4,44 @@ package datastructures.Stack;
  * Stack using LinkedList implementation
  */
 
-public class MyStack<E> implements Stack<E>{
+public class Stack<Item> implements StackInterface<Item> {
   private Node top; // node on top of the stack
   private int size; // size of the stack
 
   private class Node {
-    private E item;
+    private Item item;
     private Node next;
 
-    public Node(E element) {
-      item = element;
-      next = null;
+    public Node(Item item) {
+      this.item = item;
+      this.next = null;
     }
 
-    public Node(E element, Node nextNode) {
-      item = element;
-      next = nextNode;
+    public Node(Item item, Node nextNode) {
+      this.item = item;
+      this.next = nextNode;
     }
   }
 
-    /*
-  Add an item at the top of the stack
+  /*
+   * Add an item at the top of the stack
    */
   @Override
-  public void push(E item) {
+  public void push(Item item) {
+    if (item == null) {
+      throw new AssertionError();
+    }
+
     Node newTop = new Node(item, top);
     top = newTop;
     size++;
   }
 
   /*
-  Looks at the item at the top of the stack without removing it
+   * Looks at the item at the top of the stack without removing it
    */
   @Override
-  public E peek() throws EmptyStackException {
+  public Item peek() throws EmptyStackException {
     if (isEmpty()) {
       throw new EmptyStackException("Stack is empty.");
     }
@@ -46,22 +50,22 @@ public class MyStack<E> implements Stack<E>{
   }
 
   /*
-  Remove the item at the top of the stack
+   * Remove the item at the top of the stack
    */
   @Override
-  public E pop() throws EmptyStackException {
+  public Item pop() throws EmptyStackException {
     if (isEmpty()) {
       throw new EmptyStackException("Stack is empty.");
     }
 
     Node oldTop = top;
-    top = top.next;
+    top = oldTop.next;
     size--;
     return oldTop.item;
   }
 
-    /*
-  Test if the stack is empty
+  /*
+   * Test if the stack is empty
    */
   @Override
   public boolean isEmpty() {

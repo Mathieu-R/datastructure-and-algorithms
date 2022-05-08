@@ -1,8 +1,9 @@
 package datastructures.Queue;
 
-public interface Queue<E> {
-  public void enqueue(E item);
-  public E dequeue() throws EmptyQueueException;
+public interface QueueInterface<Item> {
+  public void enqueue(Item item);
+  public Item dequeue() throws EmptyQueueException;
   public boolean isEmpty();
+  public boolean isFull();
   public int size();
 }

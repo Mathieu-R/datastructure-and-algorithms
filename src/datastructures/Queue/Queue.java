@@ -1,50 +1,54 @@
 package datastructures.Queue;
 
-public class MyQueueInterface<E> implements QueueInterface<E> {
-  Node first;
-  Node last;
+public class Queue<Item> implements QueueInterface<Item> {
+  Node head; // first element of the Queue
+  Node tail; // last element of the Queue
   int size = 0;
 
   private class Node {
-    private E item;
+    private Item item;
     private Node next;
 
-    public Node(E element) {
+    public Node(Item element) {
       item = element;
       next = null;
     }
 
-    public Node(E element, Node nextNode) {
+    public Node(Item element, Node nextNode) {
       item = element;
       next = nextNode;
     }
   }
 
+  /**
+   * Add an item to the tail of the Queue
+   */
   @Override
-  public void enqueue(E item) {
-    Node oldLast = last;
-    last = new Node(item);
+  public void enqueue(Item item) {
+    Node oldTail = tail;
+    Node node = new Node(item);
 
     if (isEmpty()) {
-      first = last;
+      head = tail = node;
     } else {
-      oldLast.next = last;
+      tail = node;
+      oldTail.next = tail;
     }
 
     size++;
   }
 
   @Override
-  public E dequeue() throws EmptyQueueException {
+  public Item dequeue() throws EmptyQueueException {
     if (isEmpty()) {
       throw new EmptyQueueException();
     }
 
-    Node oldFirst = first;
-    first = first.next;
+    Node oldHead = head;
+    head = head.next;
     size--;
 
-    return oldFirst.item;
+    return oldHead.item;
   }
 
   @Override
