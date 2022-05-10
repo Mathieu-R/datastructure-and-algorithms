@@ -21,7 +21,7 @@ public class BinarySearchTree<Key> {
     if (key < Tree.key) {
       return find(Tree.left, key);
     } else {
-      return find(Tree.right, key)
+      return find(Tree.right, key);
     }
   }
 
@@ -37,7 +37,7 @@ public class BinarySearchTree<Key> {
     if (key < Tree.key) {
       return insert(Tree.left, key);
     } else {
-      return insert(Tree.right, key)
+      return insert(Tree.right, key);
     }
   }
 }

@@ -147,6 +147,6 @@ public class MyDoublyLinkedList<Item> implements ListInterface<Item> {
   }
 
   public static void main(String[] args) {
-    MyDoublyLinkedList<Integer> DLL = new MyDoublyLinkedList<Integer>()
+    MyDoublyLinkedList<Integer> DLL = new MyDoublyLinkedList<Integer>();
   }
 }

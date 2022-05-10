@@ -52,7 +52,7 @@ public class MySinglyLinkedList<Item> implements ListInterface<Item> {
       counter++;
     }
 
-    if (currentNode.next !== null) {
+    if (currentNode.next != null) {
       node.next = currentNode.next;
     }
 
