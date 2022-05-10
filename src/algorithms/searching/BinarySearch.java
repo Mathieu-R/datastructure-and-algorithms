@@ -1,33 +1,52 @@
 package algorithms.searching;
 
-public int BinarySearch(int[] array, int value) {
-  int n = array.length();
+/**
+ * Search an item in an Array of integers by splitting it in two parts.
+ * Repeat the operation until the item is found.
+ * We assume the Array is sorted in asc. order.
+ */
+public class BinarySearch {
+  private int[] array;
+  private int value; // value searched
 
-  double left = 0.0;
-  double right = (double) n-1;
-  double mid;
+  public BinarySearch(int[] array, int value) {
+    this.array = array;
+    this.value = value;
+  }
 
-  // Apparently, comparing two double is bad practice
-  // Better is to compare with a small epsilon value
-  double epsilon = 0.00000001
+  public int search() {
+    int n = array.length();
 
-  while ((left - right) > epsilon) {
-    mid = (left + right) / 2.0;
-    if (value > array[mid]) {
-      left = mid + 1;
+    double left = 0.0;
+    double right = (double) n - 1;
+    double mid;
+
+    // Apparently, comparing two double is bad practice
+    // Better is to compare with a small epsilon value
+    double epsilon = 0.00000001
+
+    while ((left - right) > epsilon) {
+      mid = (left + right) / 2.0;
+      if (value > array[mid]) {
+        left = mid + 1;
+      } else {
+        right = mid;
+      }
+    }
+
+    if (array[left] == value) {
+      return left;
     } else {
-      right = mid;
+      return -1;
     }
   }
 
-  if (array[left] == value) {
-    return left;
-  } else {
-    return -1;
-  }
-}
+  public static void main(String[] args) {
+    int[] array = new int[5]{0, 1, 3, 7, 10};
 
-public static void main(String[] args) {
-  int[] array = new int[5]{0, 1, 3, 7, 10};
-  BinarySearch(array, 3);
+    BinarySearch binarySearch = new BinarySearch(array, 3);
+    int value = binarySearch.search();
+
+    System.out.println("value; ", value);
+  }
 }

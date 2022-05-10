@@ -17,6 +17,10 @@ public class QueueArray<Item> implements QueueInterface<Item> {
 
   @Override
   public void enqueue(Item item) {
+    if (isFull()) {
+      resize();
+    }
+
 
   }
 
@@ -25,14 +29,23 @@ public class QueueArray<Item> implements QueueInterface<Item> {
     return null;
   }
 
-  @Override
-  public boolean isEmpty() {
-    return false;
+  public void resize() {
+    Item[] temp = new Item[size * 2];
+
+    for (int i = 0; i < data.length; i++) {
+      temp[i] = data[i];
+    }
+
+    data = temp;
   }
 
   @Override
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
   public boolean isFull() {
-    return false;
+    return data.length == size;
   }
 
   @Override

@@ -4,7 +4,7 @@ package datastructures.Stack;
  * Stack using LinkedList implementation
  */
 
-public class Stack<Item> implements StackInterface<Item> {
+public class StackLinkedList<Item> implements StackInterface<Item> {
   private Node top; // node on top of the stack
   private int size; // size of the stack
 

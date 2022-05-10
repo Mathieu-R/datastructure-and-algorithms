@@ -1,6 +1,6 @@
 package datastructures.Queue;
 
-public class Queue<Item> implements QueueInterface<Item> {
+public class QueueLinkedList<Item> implements QueueInterface<Item> {
   Node head; // first element of the Queue
   Node tail; // last element of the Queue
   int size = 0;

@@ -31,12 +31,21 @@ public class StackArray<Item> implements StackInterface<Item> {
     return null;
   }
 
+  public void resize() {
+    Item[] temp = new Item[size * 2];
+
+    for (int i = 0; i < data.length; i++) {
+      temp[i] = data[i];
+    }
+
+    data = temp;
+  }
+
   @Override
   public boolean isEmpty() {
     return false;
   }
 
-  @Override
   public boolean isFull() {
     return false;
   }

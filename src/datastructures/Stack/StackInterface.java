@@ -5,6 +5,5 @@ public interface StackInterface<Item> {
   public Item pop() throws  EmptyStackException;
   public Item peek() throws EmptyStackException;
   public boolean isEmpty();
-  public boolean isFull();
   public int size();
 }
